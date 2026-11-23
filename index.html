@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ShopEasy – Online Shopping</title>
+  <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="brand">
+      <span class="logo">🛍️</span>
+      <span class="store-name">ShopEasy</span>
+    </div>
+    <input type="text" id="searchInput" class="search" placeholder="Search products by name...">
+    <button id="cartToggle" class="btn btn-cart">
+      🛒 Cart <span id="cartCount" class="badge">0</span>
+    </button>
+  </header>
+
+  <aside id="cartPanel" class="cart-panel">
+    <div class="cart-head">
+      <h2>Shopping Cart</h2>
+      <button id="cartClose" class="btn btn-small btn-gray">✕</button>
+    </div>
+    <div id="cartItems"></div>
+    <div id="cartFooter" class="cart-footer">
+      <div class="cart-total">Total: <strong id="cartTotal">$0.00</strong></div>
+      <button id="clearCart" class="btn btn-danger">Clear Cart</button>
+    </div>
+  </aside>
+
+  <main class="container">
+
+    <section class="toolbar">
+      <div class="total-products">Total products: <strong id="totalProducts">0</strong></div>
+      <select id="categoryFilter" class="select"></select>
+      <select id="sortPrice" class="select">
+        <option value="none">Sort by price</option>
+        <option value="asc">Price: Low to High</option>
+        <option value="desc">Price: High to Low</option>
+      </select>
+      <button id="toggleForm" class="btn btn-primary">➕ Add Product</button>
+    </section>
+
+    <section id="formSection" class="form-section">
+      <h2 id="formTitle">Add New Product</h2>
+      <form id="productForm" novalidate>
+        <input type="hidden" id="productId">
+
+        <div class="form-group">
+          <label for="pName">Product Name</label>
+          <input type="text" id="pName" placeholder="Min 3 characters">
+          <span class="error" id="errName"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="pPrice">Price</label>
+          <input type="number" id="pPrice" step="0.01" placeholder="e.g. 49.99">
+          <span class="error" id="errPrice"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="pCategory">Category</label>
+          <select id="pCategory">
+            <option value="">-- Select category --</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Clothing">Clothing</option>
+            <option value="Accessories">Accessories</option>
+            <option value="Home">Home</option>
+            <option value="Sports">Sports</option>
+          </select>
+          <span class="error" id="errCategory"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="pImage">Image URL</label>
+          <input type="text" id="pImage" placeholder="https://...">
+          <span class="error" id="errImage"></span>
+        </div>
+
+        <div class="form-group full">
+          <label for="pDesc">Description</label>
+          <textarea id="pDesc" rows="3" placeholder="Product description"></textarea>
+          <span class="error" id="errDesc"></span>
+        </div>
+
+        <div class="form-actions full">
+          <button type="submit" id="submitBtn" class="btn btn-primary">Add Product</button>
+          <button type="button" id="cancelEdit" class="btn btn-gray">Cancel</button>
+        </div>
+      </form>
+      <div id="formMessage" class="form-message"></div>
+    </section>
+
+    <section id="productList" class="product-grid"></section>
+    <div id="noProducts" class="empty-msg">No products found</div>
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="./assets/js/script.js"></script>
+</body>
+</html>
